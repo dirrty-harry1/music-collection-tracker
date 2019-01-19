@@ -30,10 +30,10 @@ public class PdfWriter implements Writer {
 
   @Override
   public void write(List<Artist> artists, File file) {
-    if(file.exists()) {
+    if (file.exists()) {
       file.delete();
     }
-    
+
     final Document document = new Document();
     try {
       com.itextpdf.text.pdf.PdfWriter.getInstance(document, new FileOutputStream(file));
@@ -41,14 +41,14 @@ public class PdfWriter implements Writer {
       document.open();
 
       final PdfPTable table = new PdfPTable(3);
+      table.setWidthPercentage(95);
+      table.setWidths(new int[] { 45, 45, 10 });
       addTableHeader(table);
-      
-      for(Artist artist: artists) {
-        for(Album album: artist.getAlbums()) {
-          addRows(table, 
-              Arrays.asList(artist.getName().toLowerCase(), 
-                  album.getName().toLowerCase(), 
-                  album.getCdCount().toString()));
+
+      for (Artist artist : artists) {
+        for (Album album : artist.getAlbums()) {
+          addRows(table, Arrays.asList(artist.getName().toLowerCase(), album.getName().toLowerCase(),
+              album.getCdCount().toString()));
         }
       }
 
@@ -72,6 +72,6 @@ public class PdfWriter implements Writer {
   }
 
   private void addRows(PdfPTable table, List<String> cells) {
-    cells.forEach(table::addCell);    
+    cells.forEach(table::addCell);
   }
 }

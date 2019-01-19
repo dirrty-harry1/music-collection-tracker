@@ -41,7 +41,7 @@ public class FolderReader {
 
   private Artist extractArtist(File artistFolder) {
     final Artist artist = new Artist(artistFolder.getName());
-    extractAlbums(artistFolder).forEach(album -> artist.addAlbum(album));
+    extractAlbums(artistFolder).forEach(artist::addAlbum);
     return artist;
   }
 

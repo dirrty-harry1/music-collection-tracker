@@ -22,7 +22,10 @@ public class Artist extends Entry implements HasAlbumCountAndName {
   }
   
   @Override
-  public Integer getAlbumCount() {
-    return albums.size();
+  public Integer getCdCount() {    
+    return albums.stream()
+        .map(Album::getCdCount)
+        .mapToInt(Integer::intValue)
+        .sum();
   }
 }
