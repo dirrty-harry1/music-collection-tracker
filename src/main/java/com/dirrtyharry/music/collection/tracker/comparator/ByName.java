@@ -1,16 +1,14 @@
 package com.dirrtyharry.music.collection.tracker.comparator;
 
-import java.util.Comparator;
-
 import com.dirrtyharry.music.collection.tracker.model.HasName;
+import java.util.Comparator;
 
 public class ByName implements Comparator<HasName> {
   private static ByName instance;
 
-  private ByName() {
-  }
+  private ByName() {}
 
-  public synchronized static ByName getInstance() {
+  public static synchronized ByName getInstance() {
     if (instance == null) {
       instance = new ByName();
     }

@@ -1,17 +1,15 @@
 package com.dirrtyharry.music.collection.tracker.comparator;
 
+import com.dirrtyharry.music.collection.tracker.model.HasAlbumCountAndName;
 import java.util.Comparator;
 
-import com.dirrtyharry.music.collection.tracker.model.HasAlbumCountAndName;
+public class ByCdCount implements Comparator<HasAlbumCountAndName> {
 
-public class ByCdCount implements Comparator<HasAlbumCountAndName> { 
-  
   private static ByCdCount instance;
 
-  private ByCdCount() {
-  }
+  private ByCdCount() {}
 
-  public synchronized static ByCdCount getInstance() {
+  public static synchronized ByCdCount getInstance() {
     if (instance == null) {
       instance = new ByCdCount();
     }

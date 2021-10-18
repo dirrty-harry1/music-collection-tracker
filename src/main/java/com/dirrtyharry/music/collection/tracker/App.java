@@ -3,21 +3,22 @@
  */
 package com.dirrtyharry.music.collection.tracker;
 
-import java.io.File;
-import java.util.List;
-
 import com.dirrtyharry.music.collection.tracker.comparator.ByCdCount;
 import com.dirrtyharry.music.collection.tracker.model.Artist;
 import com.dirrtyharry.music.collection.tracker.reader.FolderReader;
 import com.dirrtyharry.music.collection.tracker.writer.CsvWriter;
 import com.dirrtyharry.music.collection.tracker.writer.PdfWriter;
+import java.io.File;
+import java.util.List;
 
 public class App {
   public static void main(String[] args) {
-//    final List<Artist> artists = FolderReader.getInstance().extractMetaData(new File("/home/harry/workspaces/FolderTest/"));
-    final List<Artist> artists = FolderReader.getInstance().extractMetaData(new File("/home/harry/music/Musiksammlung/"));
+    //    final List<Artist> artists = FolderReader.getInstance().extractMetaData(new
+    // File("/home/harry/workspaces/FolderTest/"));
+    final List<Artist> artists =
+        FolderReader.getInstance().extractMetaData(new File("/home/harry/music/Musiksammlung/"));
     artists.sort(ByCdCount.getInstance());
     CsvWriter.getInstance().write(artists, new File("/home/harry/workspaces/FolderTest/test.csv"));
-    PdfWriter.getInstance().write(artists, new File("/home/harry/workspaces/FolderTest/test.pdf"));    
+    PdfWriter.getInstance().write(artists, new File("/home/harry/workspaces/FolderTest/test.pdf"));
   }
 }
