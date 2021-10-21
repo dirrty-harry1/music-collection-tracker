@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PdfWriter implements Writer {
+  private static final String FILE_SUFFIX = "pdf";
   private static PdfWriter instance;
 
   private PdfWriter() {}
@@ -24,6 +25,11 @@ public class PdfWriter implements Writer {
       instance = new PdfWriter();
     }
     return instance;
+  }
+
+  @Override
+  public String getFileSuffix() {
+    return FILE_SUFFIX;
   }
 
   @Override

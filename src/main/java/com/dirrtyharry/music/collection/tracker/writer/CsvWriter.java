@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 public class CsvWriter implements Writer {
+  private static final String FILE_SUFFIX = "csv";
   private static CsvWriter instance;
 
   private CsvWriter() {}
@@ -17,6 +18,11 @@ public class CsvWriter implements Writer {
       instance = new CsvWriter();
     }
     return instance;
+  }
+
+  @Override
+  public String getFileSuffix() {
+    return FILE_SUFFIX;
   }
 
   @Override

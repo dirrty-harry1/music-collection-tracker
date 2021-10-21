@@ -5,5 +5,7 @@ import java.io.File;
 import java.util.List;
 
 public interface Writer {
+  String getFileSuffix();
+
   void write(List<Artist> artists, File file);
 }
